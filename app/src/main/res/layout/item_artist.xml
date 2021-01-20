@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dp_8"
-    android:background="@color/colorAccent"
+    android:background="@color/color_accent"
     android:padding="@dimen/dp_8">
 
     <ImageView
         android:id="@+id/imageArtist"
         android:layout_width="@dimen/dp_64"
         android:layout_height="@dimen/dp_64"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/dp_16"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

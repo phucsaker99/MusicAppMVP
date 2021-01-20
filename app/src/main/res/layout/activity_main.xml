@@ -13,8 +13,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabTextColor="@color/colorBlack"
-        android:background="@color/colorHalfBaked"/>
+        app:tabTextColor="@color/color_black"
+        android:background="@color/color_half_baked"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerMusic"

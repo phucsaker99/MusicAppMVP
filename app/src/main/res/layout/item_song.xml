@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dp_8"
     android:padding="@dimen/dp_8"
-    android:background="@color/colorAccent">
+    android:background="@color/color_accent">
 
     <ImageView
         android:id="@+id/imageSong"

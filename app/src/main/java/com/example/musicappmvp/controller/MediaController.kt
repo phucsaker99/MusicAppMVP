@@ -64,5 +64,4 @@ open class MediaController(
                 instance = it
             }
     }
-
 }
