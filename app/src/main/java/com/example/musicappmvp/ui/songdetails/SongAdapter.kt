@@ -27,7 +27,6 @@ class SongAdapter(private val context: Context) : RecyclerView.Adapter<SongAdapt
     override fun onBindViewHolder(holder: SongHolder, position: Int) =
         holder.bind(songList[position])
 
-
     inner class SongHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(song: Song) {
             itemView.apply {
@@ -42,6 +41,5 @@ class SongAdapter(private val context: Context) : RecyclerView.Adapter<SongAdapt
                 }
             }
         }
-
     }
 }

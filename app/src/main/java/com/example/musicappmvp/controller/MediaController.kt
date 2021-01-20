@@ -40,8 +40,6 @@ open class MediaController(
 
     fun seek(position: Int) = player?.seekTo(position)
 
-
-
     fun change(value: Int) {
         index += value
         if (index < 0) {

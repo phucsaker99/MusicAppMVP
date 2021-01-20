@@ -5,15 +5,14 @@ import com.example.musicappmvp.data.model.Song
 
 class MusicRepository constructor(
     private val local: MusicDataSource.Local.Resolver,
-    private val remote: MusicDataSource.Remote
-) : MusicDataSource.Local.Resolver, MusicDataSource.Remote {
+) : MusicDataSource.Local.Resolver {
     override fun getSongList(): MutableList<Song> = local.getSongList()
 
     override fun getArtistList(): MutableList<Artist> = local.getArtistList()
 
     companion object {
         private var instance: MusicRepository? = null
-        fun getInstance(local: MusicDataSource.Local.Resolver, remote: MusicDataSource.Remote) =
-            instance?: MusicRepository(local, remote).also { instance = it }
+        fun getInstance(local: MusicDataSource.Local.Resolver) =
+            instance?: MusicRepository(local).also { instance = it }
     }
 }

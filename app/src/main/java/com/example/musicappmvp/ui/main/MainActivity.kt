@@ -34,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        unbindService(connectionService)
+    }
+
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
@@ -44,6 +49,8 @@ class MainActivity : AppCompatActivity() {
             initView()
         }
     }
+
+    fun getService(): SongService? = serviceSong
 
     private fun initView() {
         serviceSong = SongService()
@@ -63,11 +70,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
-
         }
     }
-
-    fun getService(): SongService? = serviceSong
 
     private fun checkPermission(): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -86,10 +90,5 @@ class MainActivity : AppCompatActivity() {
         var mediaMusic: MediaController? = null
         val PERMISSION = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
         var serviceSong: SongService? = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        unbindService(connectionService)
     }
 }

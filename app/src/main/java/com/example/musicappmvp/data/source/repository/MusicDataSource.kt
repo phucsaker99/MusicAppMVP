@@ -10,8 +10,4 @@ interface MusicDataSource {
             fun getArtistList(): MutableList<Artist>
         }
     }
-
-    interface Remote {
-        
-    }
 }

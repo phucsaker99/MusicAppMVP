@@ -8,7 +8,6 @@ import com.example.musicappmvp.data.source.repository.MusicRepository
 object RepositoryFactory {
     fun getRepository(context: Context): MusicRepository {
         val resolverDataImp = ResolverDataImp.getInstance(context)
-        val musicApiImp = MusicApiImp.getInstance(context)
-        return MusicRepository.getInstance(resolverDataImp, musicApiImp)
+        return MusicRepository.getInstance(resolverDataImp)
     }
 }

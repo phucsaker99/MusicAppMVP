@@ -92,14 +92,12 @@ open class SongService : Service() {
         val builder: Notification = NotificationCompat.Builder(
             this, NotificationApp.CHANNEL_SONG_ID
         ).build()
-
         //builder.setSmallIcon(R.drawable.ic_music)
         //builder.setCustomContentView(remoteView)
         //builder.priority = NotificationCompat.PRIORITY_HIGH
         manager.notify(1, builder)
         //startForeground(1, builder.build())
     }
-
 
     open fun stopService() {
         MainActivity.mediaMusic?.release()

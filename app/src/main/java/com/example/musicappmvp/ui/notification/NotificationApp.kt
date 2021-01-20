@@ -23,7 +23,6 @@ class NotificationApp : Application() {
             val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager.createNotificationChannel(channelSong)
         }
-
     }
 
     companion object {
