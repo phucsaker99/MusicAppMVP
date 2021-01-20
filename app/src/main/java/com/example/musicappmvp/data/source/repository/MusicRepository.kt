@@ -16,5 +16,4 @@ class MusicRepository constructor(
         fun getInstance(local: MusicDataSource.Local.Resolver, remote: MusicDataSource.Remote) =
             instance?: MusicRepository(local, remote).also { instance = it }
     }
-
 }

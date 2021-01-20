@@ -24,5 +24,4 @@
         <receiver android:name=".ui.notification.NotificationReceiver"/>
         <service android:name=".ui.notification.SongService"/>
     </application>
-
 </manifest>

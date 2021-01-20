@@ -1,5 +1,6 @@
 package com.example.musicappmvp.ui.notification
 
+import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
@@ -54,7 +55,7 @@ open class SongService : Service() {
     override fun onBind(intent: Intent?): IBinder? = SongServiceBinder(this)
 
     fun setSongList(songList: MutableList<Song>) {
-        if (MainActivity.mediaMusic == null) {
+        if (MainActivity.mediaMusic != null) {
             mediaController = object : MediaController(songList, this@SongService) {
 
                 override fun pause() {
@@ -88,14 +89,15 @@ open class SongService : Service() {
             }
         }
 
-        val builder = NotificationCompat.Builder(
+        val builder: Notification = NotificationCompat.Builder(
             this, NotificationApp.CHANNEL_SONG_ID
-        )
+        ).build()
 
-        builder.setSmallIcon(R.drawable.ic_music)
-        builder.setCustomContentView(remoteView)
-        builder.priority = NotificationCompat.PRIORITY_HIGH
-        startForeground(1, builder.build())
+        //builder.setSmallIcon(R.drawable.ic_music)
+        //builder.setCustomContentView(remoteView)
+        //builder.priority = NotificationCompat.PRIORITY_HIGH
+        manager.notify(1, builder)
+        //startForeground(1, builder.build())
     }
 
 
