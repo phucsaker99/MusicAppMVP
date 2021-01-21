@@ -1,6 +1,5 @@
 package com.example.musicappmvp.ui.songdetails
 
-import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -10,22 +9,25 @@ import com.example.musicappmvp.R
 import com.example.musicappmvp.data.model.Song
 import kotlinx.android.synthetic.main.item_song.view.*
 
-class SongAdapter(private val context: Context) : RecyclerView.Adapter<SongAdapter.SongHolder>() {
+class SongAdapter : RecyclerView.Adapter<SongAdapter.SongHolder>() {
     var listenerClick: (Song) -> Unit = { _ -> }
 
-    var songList: MutableList<Song> = mutableListOf()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    private var songs: MutableList<Song> = mutableListOf()
+
+    fun setSongList(songs: MutableList<Song>){
+        this.songs = songs
+        notifyDataSetChanged()
+    }
+
+    fun getSongList() = songs
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongHolder =
-        SongHolder(LayoutInflater.from(context).inflate(R.layout.item_song, parent, false))
+        SongHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_song, parent, false))
 
-    override fun getItemCount(): Int = songList.size
+    override fun getItemCount(): Int = songs.size
 
     override fun onBindViewHolder(holder: SongHolder, position: Int) =
-        holder.bind(songList[position])
+        holder.bind(songs[position])
 
     inner class SongHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(song: Song) {

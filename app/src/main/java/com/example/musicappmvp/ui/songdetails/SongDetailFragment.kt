@@ -11,10 +11,10 @@ import com.example.musicappmvp.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_detail_song.*
 
 class SongDetailFragment : Fragment(R.layout.fragment_detail_song), SongContract.View {
-    private lateinit var songAdapter: SongAdapter
+    private var songAdapter = SongAdapter()
     private var songPresenter: SongPresenter? = null
     private var indexSong = -1
-    private var songList: MutableList<Song> = mutableListOf()
+    private var songs: MutableList<Song> = mutableListOf()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -30,26 +30,24 @@ class SongDetailFragment : Fragment(R.layout.fragment_detail_song), SongContract
                 it
             )
         }
-
-        songAdapter = SongAdapter(context!!)
         songAdapter.listenerClick = this::clickListenerItemSong
-        songList = songPresenter?.getSongList()!!
+        songs = songPresenter?.getSongList()!!
         recyclerSong.adapter = songAdapter
-        MainActivity.mediaMusic = MediaController(songList, context!!)
+        MainActivity.mediaMusic = MediaController(songs, context!!)
     }
 
     override fun showSongList(songList: MutableList<Song>) {
-        this.songList = songList
-        songAdapter.songList = songList
+        this.songs = songList
+        songAdapter.setSongList(songList)
         songAdapter.notifyDataSetChanged()
     }
 
     private fun clickListenerItemSong(song: Song) {
         val mainActivity = activity as MainActivity
-        indexSong = songList.indexOf(song)
+        indexSong = songs.indexOf(song)
         MainActivity.mediaMusic?.create(indexSong)
-        mainActivity.getService()?.setSongList(songAdapter.songList)
-        MainActivity.mediaMusic?.create(songAdapter.songList.indexOf(song))
+        mainActivity.getService()?.setSongList(songAdapter.getSongList())
+        MainActivity.mediaMusic?.create(songAdapter.getSongList().indexOf(song))
     }
 }
 

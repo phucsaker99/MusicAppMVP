@@ -57,7 +57,7 @@ open class MediaController(
     companion object {
         var index = 0
         private var instance: MediaController? = null
-        fun getInstance(songs: MutableList<Song>, context: Context): MediaController =
+        open fun getInstance(songs: MutableList<Song>, context: Context): MediaController =
             instance ?: MediaController(songs, context).also {
                 instance = it
             }

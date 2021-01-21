@@ -15,6 +15,7 @@ import com.example.musicappmvp.R
 import com.example.musicappmvp.controller.MediaController
 import com.example.musicappmvp.data.model.Song
 import com.example.musicappmvp.ui.main.MainActivity
+import java.util.*
 
 open class SongService : Service() {
     private var remoteView: RemoteViews? = null
@@ -56,6 +57,7 @@ open class SongService : Service() {
 
     fun setSongList(songList: MutableList<Song>) {
         if (MainActivity.mediaMusic != null) {
+            val ds = MainActivity.mediaMusic as Objects
             mediaController = object : MediaController(songList, this@SongService) {
 
                 override fun pause() {

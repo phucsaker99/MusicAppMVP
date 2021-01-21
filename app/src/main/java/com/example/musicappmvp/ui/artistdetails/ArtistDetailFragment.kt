@@ -8,8 +8,8 @@ import com.example.musicappmvp.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_detail_artist.*
 
 class ArtistDetailFragment : Fragment(R.layout.fragment_detail_artist) {
-    private var artistList: MutableList<Artist>?= null
-    private var adapterArtist: ArtistAdapter?= null
+    private var artists: MutableList<Artist>?= null
+    private val adapterArtist = ArtistAdapter()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -17,9 +17,8 @@ class ArtistDetailFragment : Fragment(R.layout.fragment_detail_artist) {
     }
 
     private fun initView() {
-        adapterArtist = context?.let { ArtistAdapter(it) }
-        artistList = MainActivity.resolverMusic.getArtistList()
-        adapterArtist?.artistList = artistList!!
+        artists = MainActivity.resolverMusic.getArtistList()
+        adapterArtist.artists = artists!!
         recyclerArtist.adapter = adapterArtist
     }
 }
